@@ -18,6 +18,11 @@
 *Board는 드롭다운바로 카테고리 이동이 가능함  
 ##
 
+<h4>FOOTER</h4>
+#Footer
+
+*Footer에는 copywrite정보와 contact정보가 들어있음  
+##
 
 <h4>MEMBER</h4>
 #Join (회원가입)
