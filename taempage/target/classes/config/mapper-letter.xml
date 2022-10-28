@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="LetterDao">
+
+	<!-- 카운트페이지 -->
+	<select id="countPage" resultType="int">	
+		<![CDATA[
+		SELECT COUNT(letterNo)
+		FROM LETTER
+		WHERE letterNo > 0
+		]]>
+	</select>
+	
+	<!-- 리스트 -->
+<!--	<select id="letterList" resultType="LetterVo" parameterType="com.homepage.taempage.common.LCriteria">
+		select l.letterNo, l.memNo, l.lTitle, l.lContent, l.letterDate, m.memId 
+			from LETTER l
+			Inner Join MEMBER m
+				ON l.memNo = m.memNo 
+			ORDER BY letterNo DESC
+	</select>  -->
+	
+	<select id="letterList" resultType="LetterVo" parameterType="com.homepage.taempage.common.LCriteria">
+		SELECT a.*
+		FROM (
+    		select l.letterNo, l.memNo, l.lTitle, l.lContent, l.letterDate, m.memId, ROW_NUMBER() OVER(ORDER BY letterNo DESC) AS RNUM
+				from LETTER l
+					Inner Join MEMBER m
+					ON l.memNo = m.memNo
+				where 1=1		    
+    	)a  	
+    	WHERE RNUM BETWEEN #{rowStart} and #{rowEnd}
+		ORDER BY letterNo DESC
+	</select>
+	
+	<!-- 글 상세보기 -->
+	<select id="letterView" resultType="LetterVo">
+		select l.letterNo, l.memNo, l.lTitle, l.lContent, l.letterDate, m.memId
+			from LETTER l
+			Inner Join Member m
+				ON l.memNo = m.memNo
+			Where letterNo=#{letterNo}
+	</select>
+	
+	<!-- 글 쓰기 -->
+	<insert id="letterWrite" parameterType="LetterVo">
+		insert into LETTER ("LETTERNO", "MEMNO", "LPASSWORD", "LTITLE", "LCONTENT")
+		values (LETTERNO.nextval, #{memNo}, #{lPassword}, #{lTitle}, #{lContent})
+	</insert>
+	
+	<!-- pw체크 -->
+	<select id="pwChk" resultType="LetterVo">
+		select letterNo, lPassword from LETTER where letterNo=#{letterNo}
+	</select>
+	
+	<!-- 글 수정 -->
+	<update id="letterUpdate" parameterType="LetterVo">
+		update LETTER set
+		lTitle=#{lTitle},
+		lContent=#{lContent},
+		lPassword=#{lPassword}
+		where letterNo=#{letterNo}
+	</update>
+
+	<!-- 글 삭제 -->
+	<delete id="letterDelete" parameterType="int">
+		delete from LETTER where letterNo=#{letterNo}
+	</delete>
+	
+	<!-- reply -->
+	<!-- reply 쓰기 -->
+	<insert id="lReplyWrite" parameterType="LetterVo">
+		insert into LETTER ("reply")
+		values (#{reply})
+		where letterNo=#{letterNo}
+	</insert>
+	
+	<!-- reply 보기 -->
+	
+	<!-- reply 수정 -->
+	
+	<!-- reply 삭제 -->
+	
+	
+
+</mapper>
