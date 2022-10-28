@@ -1,0 +1,460 @@
+@charset "UTF-8";
+
+/***********
+1. Fonts
+***********/
+
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@200;300;400;500;600;700&family=Roboto+Mono:wght@200;300;400;500;600;700&family=Rubik+Beastly&family=Sedgwick+Ave&display=swap');
+
+
+/*********************************
+2. Body and some general stuff
+*********************************/
+
+*
+{
+	margin: 0;
+	padding: 0;
+}
+body
+{
+	font-family: 'Roboto Mono', 'IBM Plex Sans KR';
+	font-size: 14px;
+	line-height: 23px;
+	font-weight: 400;
+	background: #FFFFFF;
+	color: #1e1e27;
+}
+div
+{
+	display: block;
+	position: relative;
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+a
+{
+	text-decoration: none;
+}
+
+::-webkit-input-placeholder
+{
+	font-size: 16px !important;
+	font-weight: 500;
+	color: #777777 !important;
+}
+:-moz-placeholder /* older Firefox*/
+{
+	font-size: 16px !important;
+	font-weight: 500;
+	color: #777777 !important;
+}
+::-moz-placeholder /* Firefox 19+ */
+{
+	font-size: 16px !important;
+	font-weight: 500;
+	color: #777777 !important;
+}
+:-ms-input-placeholder
+{
+	font-size: 16px !important;
+	font-weight: 500;
+	color: #777777 !important;
+}
+::input-placeholder
+{
+	font-size: 16px !important;
+	font-weight: 500;
+	color: #777777 !important;
+}
+.super_container
+{
+	width: 100%;
+	overflow: hidden;
+}
+.all_container
+{
+	width: 100%;
+	margin-top: 270px;
+	margin-left:auto;
+	margin-right:auto;
+	background: #f0eeea;
+}
+
+/*button*/
+.button_base:hover {
+    cursor: pointer;
+}
+.btn
+{
+	float: right;
+	left: -100px;
+	color: #47a97a;
+    border: #47a97a solid 1px;
+    padding: 10px 20px;
+    background-color: #d5d7ca;
+}
+.btn:hover
+{
+	color: #d5d7ca;
+    background-color: #47a97a;
+    
+}
+
+
+/*********************************
+2. header & footer
+*********************************/
+
+.header
+{
+	position: fixed;
+	float: left;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 200px;
+	background:#d1d1c0;
+	z-index: 10;
+}
+
+/*로고*/
+.main_logo
+{
+	position: absolute;
+	justify-content:center;
+	display: row;
+	width: 20%;
+	height: 100%;
+	left: 40%;
+	background:#d1d1c0;
+		
+}
+.main_logo a img
+{	
+	margin: auto 50px;
+	max-height: 100%;
+	max-width: 100%;
+}
+
+/*navigation*/
+.header_nav
+{
+	position: fixed;
+	margin-top:200px;
+	width: 100%;
+	height: 70px;
+	display: inline-block;
+	justify-content:center;
+	align-items: center;
+	z-index: 10;
+	background:#008040;
+}
+.header_nav ul
+{
+	justify-content:center;
+	align-items: center;
+	background: none;
+	display: inline-block;
+	margin: 0 50px;
+}
+.header_nav ul li a
+{
+	color: #d1d1c0;
+	text-align: center;
+}
+
+/*보드-보드카테고리*/
+.board
+{
+	max-height: 50px;
+	min-width: 50px;
+	display: inline-block;
+	position: relative center;
+	text-align: center;
+	text-transform: uppercase;
+	vertical-align: middle;
+	background-color:transparent;
+}
+.board_selection a > i
+{
+	margin-left: 8px;
+}
+.board:hover .board_selection
+{
+	display: block;
+	visibility: visible;
+	opacity: 1;
+}
+.board_selection
+{
+	display: block;
+	position: absolute;
+	width: 50px;
+	background: #b5aec4;
+	max-height: 0;
+	visibility: hidden;
+	opacity: 0;
+	z-index: 1;
+	box-shadow: 0 0 25px rgba(63, 78, 100, 0.15);
+	-webkit-transition: opacity 0.3s ease;
+	-moz-transition: opacity 0.3s ease;
+	-ms-transition: opacity 0.3s ease;
+	-o-transition: opacity 0.3s ease;
+	transition: all 0.3s ease;
+}
+.board_selection li
+{
+	padding-left: 10px;
+	padding-right: 10px;
+	line-height: 30px;
+}
+.board_selection li a
+{
+	display: block;
+	color: #d1d1c0;
+	border-bottom: solid 1px #d1d1c0;
+	font-weight: 500;
+	font-size: 12px;
+	text-transform: uppercase;
+	padding: 10px;
+	-webkit-transition: opacity 0.3s ease;
+	-moz-transition: opacity 0.3s ease;
+	-ms-transition: opacity 0.3s ease;
+	-o-transition: opacity 0.3s ease;
+	transition: all 0.3s ease;
+}
+.board_selection li a:hover
+{
+	color: #008080;
+}
+.board_selection li:last-child a
+{
+	border-bottom: none;
+}
+
+
+
+/*헤더 오른쪽 
+.right_nav
+{
+	position: absolute;
+	display: inline-block;
+	justify-content:center;
+	align-items: center;
+	width: 25%;
+	height: 100%;
+	top: 0;
+	right: 0;
+}
+.right_nav ul
+{	
+	text-align: center;
+	justify-content: space-around;
+	flex-direction: row;
+	align-items: center;
+	display: inline-block;
+	font-weight: 500;
+	font-size: 15px;
+	text-transform: uppercase;
+}
+.right_nav li
+{
+	display: inline-block;
+	padding: 10px 10px;
+	line-height: 50px;
+}
+.right_nav li a
+{
+	color: #400080;
+	display: inline-block;
+	flex-direction: column;
+	width: 70px;
+	
+}
+*/
+/*footer*/
+.footer
+{
+	bottom: 0;
+	width: 100%;
+	height: 150px;
+	background:#d1d1c0;
+}
+.copyright
+{
+	float: left;
+	display: inline-block;
+	margin : 10px;
+	width: 700px;
+	height:130px;
+}
+.copyright p
+{
+	font-weight: 400;
+	text-align: center;
+	align-items:center;
+	color: #435c27;
+}
+.contact_info
+{
+	float: left;
+	display: inline-block;
+	margin : 10px;
+	width: 700px;
+	height:130px;
+}
+.contact_info p
+{
+	font-weight: 400;
+	text-align: center;
+	color: #435c27;
+}
+
+
+
+
+
+/*********************************
+2. Member
+*********************************/
+/***Join***/
+.join
+{
+	width: 50%;
+	margin: 0 auto;
+	background: #d5d7ca;
+}
+.join label
+{
+	font-weight: 600;
+	font-size: large;
+	text-align: center;
+}
+
+/***Login***/
+.login
+{
+	width: 50%;
+	margin: 0 auto;
+	background: #d5d7ca;
+}
+.login label
+{
+	font-weight: 600;
+	font-size: large;
+	text-align: center;
+
+}
+
+
+.title
+{
+	width: 100%;
+	margin: 0 auto;
+}
+.title h1
+{
+	text-align: center;
+	font-size: x-large;
+	font-weight: 700;
+}
+
+
+/*********************************
+2. Board
+*********************************/
+/***list***/
+
+
+
+/*list_top*/
+.list_top
+{
+	width: 100%;
+}
+.category
+{
+	width: 100%;
+	margin: 0 auto;
+	padding: 15px;
+	background: #47a97a;
+}
+.category p
+{
+	font-weight: 700;
+	font-size: x-large;
+	text-align: center;
+}
+.board_category
+{
+	float:left; 
+	text-align:center;
+}
+.board_category li
+{
+
+	display: inline-block;
+	text-align: center;
+	font-weight: 400;
+	font-size: medium;
+}
+
+.criteria_top
+{
+	width:100%;
+	float: left;
+	background: #47a97a;
+}
+.page_box
+{
+	right: -200px;
+}
+
+/*list-main*/
+.board_list_container
+{
+	background: #d1d1c0;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.board_list
+{
+	width: 100%;
+	align-content: center;
+}
+.board_list th
+{
+	font-weight: 700;
+	font-size: x-large;
+	padding: 40px;
+}
+.board_list td
+{
+	text-align: center;
+	padding: 20px;
+	align-items: center;
+	font-weight: 400;
+}
+
+/*list_bottom*/
+.criteria_bottom
+{
+	width:100%;
+	margin: 30px 0;
+	overflow-x:auto;
+	display: flex;
+	justify-content: center;
+	background: #47a97a;
+}
+.criteria_bottom li
+{
+	list-style: none; float: left; padding: 6px;
+}
+
+
+
+/***view***/
+
